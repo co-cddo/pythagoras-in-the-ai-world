@@ -2,7 +2,7 @@ Overview
 ========
 A mathmatical equation, programming code and an AI query can be compared.
 They each provide a common service of allowing someone to describe a problem,
-and solve it.
+and solve it. Each can be used successfully to determine the correct result to the problem.
 
 When a problem is shared within an organisation, it needs to be communicated
 beyond the original authors, and each of these techniques do this.
@@ -11,12 +11,10 @@ By comparing the three techniques a common requirement can be found:
 Each requires that the context of the problem and the nature of the required
 parameters are understood.
 
-Each can be used successfully to determine the correct result to the problem.
-
-Determining the audiance who will read the code and need to understand it
+Determining the audiance who will read the problem description and need to understand it
 is vital in choosing which to use.
 
-While AI is very powerful, its cost in time and money needs to be consider
+While AI is very powerful, its cost in time and money needs to be considered
 if it is to be used for repeated tasks.
 
 The syntax of programming code still provides a good way of describing a
@@ -84,7 +82,7 @@ unknown_side = Math.sqrt(hypotenuse ** 2 - known_side ** 2)
 
 Though one could argue that even this assumes that the reader will
 recognise that an equation that includes something called a
-hypotenuse and two side relates to a right angled triangle.
+hypotenuse and two sides relates to a right angled triangle.
 However, this may be determined from the context within which
 the code is used.
 
@@ -106,6 +104,7 @@ Uses the parameters from the original equation:
 > a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>
 
 The code is short and of the four is closest to how the computer sees the problem.
+
 But for a human it is the hardest to understand.
 
 ### RightAngledTriangle
@@ -118,7 +117,7 @@ and right angled triangle are.
 
 Uses a namespace (the module `Geometric`) to set context. It then describes
 more basic objects to define the more fundemental components that go together
-to describe a right angle triange as a geometical object made up of three
+to describe a right angled triange as a geometical object made up of three
 intersecting lines.
 
 The code uses both names and construction to describe the objects.
@@ -161,6 +160,12 @@ I can pass the following to an AI tool:
 Input into a Google search input generates the result:
 
 > The length of the other side is approximately 8.49 cm.
+
+AI has processed the input and extract the key information:
+
+- it relates to a right angled triangle
+- the lengths of the hypotenuse and another side are provided
+- the length of the other side is required as output
 
 The output also includes some useful information about how the
 result was constructed.
@@ -207,7 +212,9 @@ subject of the query. Pesumable because the word hypotenuse
 was used to describe one of the sides.
 
 So this gives the correct result but the text fails to
-include a key element that a casual reader may miss.
+include a key element that a casual reader may miss. It does
+not express the problem in as easily understandable way as
+the original example.
 
 Comparison of the three ways of presenting the problem
 ======================================================
@@ -275,6 +282,29 @@ Writing code in a fashion that takes the least effort
 to understand by another developer is the most important
 development skill.
 
+#### Performance tuning
+
+Another consideration can be seen in the `RightAngledTriangle` example.
+It contains this code:
+
+```ruby
+case
+when hypotenuse / 5.0 == known_side / 3.0
+  hypotenuse / 4.0
+when hypotenuse / 5.0 == known_side / 4.0
+  hypotenuse / 3.0
+else
+  Math.sqrt(hypotenuse ** 2 - known_side ** 2)
+end
+```
+There is a special case called the 3-4-5 triangle, where a right
+angled triangle has sides of the ratios of 3:4:5 and this can
+be used to determine the relative lengths rather than using
+squares and square roots.
+
+It shows how code can be modified to use potentially more
+efficient processing to determine a result.
+
 ### AI
 
 Using AI allows the definition of problem to be made
@@ -298,6 +328,10 @@ While this time cost is insignificant in this simple
 case, if an operation that required multiple iteration
 of the query, the time would make a serious impact to
 the performance of that operation.
+
+It is also possible that the choice of language may
+influence the process used to determine the result and
+this choice of process may not be the most efficient.
 
 There could also be a financial cost. AI are usually
 provided via a hosted service that maybe free for occasional
