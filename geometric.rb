@@ -32,14 +32,14 @@ module Geometric
   end
 
   class Triangle < Shape
-    def number_of_lines
+    def number_of_sides
       3
     end
   end
 
   class RightAngledTriangle < Triangle
     def angle_between_shortest_sides
-      90 # degrees : or some other reprensentation of one quarter of a complete revolutuion
+      90 # degrees : or some other reprensentation of one quarter of a complete revolution
     end
 
     attr_reader :hypotenuse, :other_side
