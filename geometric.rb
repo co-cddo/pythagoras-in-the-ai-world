@@ -50,7 +50,7 @@ module Geometric
     end
 
     def unknown_side
-      hypotenuse ** 2 - other_side ** 2
+      Math.sqrt(hypotenuse ** 2 - other_side ** 2)
     end
   end
 end

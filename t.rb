@@ -7,6 +7,6 @@ class T
   end
 
   def c
-    a ** 2 - b ** 2
+    Math.sqrt(a ** 2 - b ** 2)
   end
 end

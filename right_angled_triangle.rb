@@ -14,7 +14,7 @@ class RightAngledTriangle
     when hypotenuse / 5.0 == known_side / 4.0
       hypotenuse / 3.0
     else
-      hypotenuse ** 2 - known_side ** 2
+      Math.sqrt(hypotenuse ** 2 - known_side ** 2)
     end
   end
 end
